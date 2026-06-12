@@ -24,8 +24,6 @@ Eval (§2.2) is separate and does **not** count toward the six.
 | **Tools** | ✅ | Mock travel APIs + optional Tavily web search; read-only estimates | `backend/app/services/travel_tools.py`, `backend/app/services/tavily_search.py` |
 | **RAG** | ✅ | Destination guides → embed → pgvector → Activity / Synthesizer | `backend/app/rag/retriever.py`, `datasets/destination_guides/` |
 | **MCP** | ✅ | Standalone MCP server exposing the same read-only tools | `backend/app/mcp/server.py` |
-| Memory | ❌ | No Mem0/Letta cross-session memory (request-scoped `AgentState` only) | — |
-| Security / Governance | ❌ | No dedicated policy engine; product uses estimate-only tools + validator | `backend/app/observability/agent_run_logger.py` (optional run logs) |
 
 ---
 
@@ -273,12 +271,6 @@ travelai/
 | Docker local stack | ✅ | `docker-compose.yml` |
 
 Deploy notes: [docs/deployment.md](docs/deployment.md)
-
----
-
-## Resume Narrative
-
-Built a multi-agent travel planner with LangGraph orchestration, pgvector RAG over destination guides, MCP-exposed read-only tools, and a reproducible eval harness (28-case golden set, dual-judge κ, baseline vs optimized). Demonstrated +21pp rule-pass improvement with explicit quality/latency/cost trade-offs.
 
 ---
 
