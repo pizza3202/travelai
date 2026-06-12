@@ -1,0 +1,13 @@
+{
+  "kappa": 0.7586,
+  "target": 0.6,
+  "meets_target": true,
+  "n_cases": 28,
+  "agreement_rate": 0.9286,
+  "rater_a": "rules",
+  "rater_b": "mock_judge (20/28)",
+  "rater_counts": {
+    "openrouter_judge": 8,
+    "mock_judge": 20
+  }
+}

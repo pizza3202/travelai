@@ -1,0 +1,80 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: travelai-postgres
+    environment:
+      POSTGRES_USER: travelai
+      POSTGRES_PASSWORD: travelai
+      POSTGRES_DB: travelai
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U travelai -d travelai"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: travelai-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: travelai-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://travelai:travelai@postgres:5432/travelai
+      REDIS_URL: redis://redis:6379/0
+      LLM_PROVIDER: openrouter
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      LANGSMITH_API_KEY: ${LANGSMITH_API_KEY:-}
+      LANGSMITH_PROJECT: travelai
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./datasets:/datasets:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  mcp:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: travelai-mcp
+    environment:
+      DATABASE_URL: postgresql+asyncpg://travelai:travelai@postgres:5432/travelai
+      REDIS_URL: redis://redis:6379/0
+      MCP_TRANSPORT: stdio
+    volumes:
+      - ./backend:/app
+      - ./datasets:/datasets:ro
+    depends_on:
+      - postgres
+      - redis
+    profiles:
+      - mcp
+    command: python -m app.mcp.server
+
+volumes:
+  postgres_data:
+  redis_data:

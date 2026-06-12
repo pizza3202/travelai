@@ -1,0 +1,990 @@
+{
+  "summary": {
+    "total_cases": 28,
+    "successful_cases": 28,
+    "error_cases": 0,
+    "rule_pass_rate": 0.5714285714285714,
+    "llm_pass_rate": 0.5357142857142857,
+    "budget_satisfaction_rate": 0.8636363636363636,
+    "valid_structure_rate": 1.0,
+    "interest_match_avg": 0.6488107142857142,
+    "forbidden_violation_rate": 0.25,
+    "latency_ms_avg": 1,
+    "latency_ms_p50": 1,
+    "estimated_cost_usd_avg": null,
+    "ragas_faithfulness_avg": null,
+    "ragas_context_recall_avg": null,
+    "ragas_cases_with_context": 0,
+    "mode": "baseline",
+    "kappa": {
+      "kappa": 0.9278,
+      "target": 0.6,
+      "meets_target": true,
+      "n_cases": 28,
+      "agreement_rate": 0.9643,
+      "rater_a": "rules",
+      "rater_b": "openrouter_judge (27/28)",
+      "rater_counts": {
+        "openrouter_judge": 27,
+        "mock_judge": 1
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "tokyo_5day_budget",
+      "tags": [
+        "budget",
+        "multi_day",
+        "city_trip",
+        "international_trip",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 5 days": true,
+        "total estimated cost is under 2500": true,
+        "includes food-related activities": true,
+        "includes cultural activities": true,
+        "has hotel estimate": false
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "japan_5day_full",
+      "tags": [
+        "budget",
+        "japan",
+        "multi_day",
+        "international_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 5 days": true,
+        "within budget": true,
+        "has flight estimate": true,
+        "has hotel estimate": false
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "paris_4day_culture",
+      "tags": [
+        "budget",
+        "paris",
+        "multi_day",
+        "city_trip",
+        "interests",
+        "international_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 0.6667,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 4 days": true,
+        "includes cultural activities": false,
+        "includes food-related activities": true,
+        "has budget summary": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "london_weekend",
+      "tags": [
+        "budget",
+        "london",
+        "multi_day",
+        "city_trip",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": null,
+        "valid_day_structure": true,
+        "interest_match": 0.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has at most 3 days": true,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "missing_budget_clarify",
+      "tags": [
+        "missing_info",
+        "clarification",
+        "international_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "mock_judge",
+      "metrics": {
+        "budget_satisfaction": null,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 1,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "asks for budget or clarification": true,
+        "needs clarification": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "missing_destination_clarify",
+      "tags": [
+        "missing_info",
+        "clarification",
+        "multi_day",
+        "budget",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 0.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "asks for destination or clarification": false,
+        "needs clarification": false
+      },
+      "forbidden_violations": [
+        "full 5-day itinerary without destination"
+      ]
+    },
+    {
+      "id": "sf_3day_city",
+      "tags": [
+        "city_trip",
+        "budget",
+        "multi_day",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": false,
+        "valid_day_structure": true,
+        "interest_match": 0.0,
+        "forbidden_fact_violation": true,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 3 days": true,
+        "within budget": false
+      },
+      "forbidden_violations": [
+        "total cost exceeds budget"
+      ]
+    },
+    {
+      "id": "nyc_4day_family",
+      "tags": [
+        "family_trip",
+        "multi_day",
+        "budget",
+        "city_trip",
+        "interests",
+        "hotel"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 0.5,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 4 days": true,
+        "within budget": true,
+        "includes cultural activities": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "paris_hotel_focus",
+      "tags": [
+        "hotel",
+        "paris",
+        "multi_day",
+        "budget",
+        "international_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": null,
+        "valid_day_structure": true,
+        "interest_match": 0.0,
+        "forbidden_fact_violation": true,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 5 days": false,
+        "has hotel estimate": false,
+        "within budget": true
+      },
+      "forbidden_violations": [
+        "missing hotel estimate"
+      ]
+    },
+    {
+      "id": "japan_transport_focus",
+      "tags": [
+        "transportation",
+        "japan",
+        "multi_day",
+        "budget",
+        "international_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": true,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 6 days": true,
+        "has transport plan": false,
+        "within budget": true
+      },
+      "forbidden_violations": [
+        "missing transport plan"
+      ]
+    },
+    {
+      "id": "london_tight_budget",
+      "tags": [
+        "budget",
+        "over_budget",
+        "city_trip",
+        "multi_day",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 3 days": true,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "tokyo_food_interests",
+      "tags": [
+        "interests",
+        "food",
+        "city_trip",
+        "budget",
+        "multi_day"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 4 days": true,
+        "includes food-related activities": true,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "paris_art_culture",
+      "tags": [
+        "interests",
+        "culture",
+        "international_trip",
+        "multi_day",
+        "budget"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 5 days": true,
+        "includes cultural activities": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "japan_nature_focus",
+      "tags": [
+        "interests",
+        "nature",
+        "multi_day",
+        "international_trip",
+        "budget"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 7 days": true,
+        "includes nature activities": true,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "sf_no_flights_needed",
+      "tags": [
+        "city_trip",
+        "budget",
+        "multi_day"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": false,
+        "valid_day_structure": true,
+        "interest_match": 0.0,
+        "forbidden_fact_violation": true,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 2 days": true,
+        "within budget": false
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "nyc_5day_budget",
+      "tags": [
+        "budget",
+        "multi_day",
+        "city_trip",
+        "interests",
+        "hotel"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 0.5,
+        "forbidden_fact_violation": true,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 5 days": true,
+        "within budget": true,
+        "has hotel estimate": false
+      },
+      "forbidden_violations": [
+        "duplicate activities"
+      ]
+    },
+    {
+      "id": "london_5day_international",
+      "tags": [
+        "international_trip",
+        "multi_day",
+        "budget",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 0.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 1,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 5 days": true,
+        "has flight estimate": true,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "paris_romantic_3day",
+      "tags": [
+        "city_trip",
+        "budget",
+        "multi_day",
+        "interests",
+        "family_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 3 days": true,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "japan_10day_stretch",
+      "tags": [
+        "multi_day",
+        "budget",
+        "international_trip",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 10 days": true,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "missing_duration",
+      "tags": [
+        "missing_info",
+        "clarification",
+        "budget",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": null,
+        "valid_day_structure": true,
+        "interest_match": 0.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "asks for duration or clarification": true,
+        "needs clarification": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "kyoto_4day_culture",
+      "tags": [
+        "city_trip",
+        "multi_day",
+        "budget",
+        "interests",
+        "international_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 4 days": true,
+        "includes cultural activities": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "barcelona_style_reject",
+      "tags": [
+        "budget",
+        "multi_day",
+        "interests",
+        "international_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": null,
+        "valid_day_structure": true,
+        "interest_match": 0.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 5 days": false,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "family_japan_6day",
+      "tags": [
+        "family_trip",
+        "multi_day",
+        "budget",
+        "international_trip",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 6 days": true,
+        "within budget": true,
+        "includes food-related activities": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "over_budget_probe",
+      "tags": [
+        "over_budget",
+        "budget",
+        "city_trip",
+        "multi_day",
+        "interests"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": false,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": true,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 3 days": true
+      },
+      "forbidden_violations": [
+        "total cost exceeds budget"
+      ]
+    },
+    {
+      "id": "london_transport_hotel",
+      "tags": [
+        "transportation",
+        "hotel",
+        "london",
+        "multi_day",
+        "budget",
+        "city_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": false,
+      "passed_llm": false,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": true,
+        "latency_ms": 1,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 4 days": true,
+        "has hotel estimate": false,
+        "has transport plan": false
+      },
+      "forbidden_violations": [
+        "missing hotel estimate"
+      ]
+    },
+    {
+      "id": "nyc_missing_info_combo",
+      "tags": [
+        "missing_info",
+        "clarification"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": null,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "needs clarification": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "paris_latest_events",
+      "tags": [
+        "interests",
+        "multi_day",
+        "budget",
+        "international_trip",
+        "city_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 0.5,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 5 days": true,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    },
+    {
+      "id": "sf_paris_multi_city_note",
+      "tags": [
+        "multi_day",
+        "budget",
+        "international_trip",
+        "interests",
+        "city_trip"
+      ],
+      "mode": "baseline",
+      "passed_rules": true,
+      "passed_llm": true,
+      "judge_rater_b": "openrouter_judge",
+      "metrics": {
+        "budget_satisfaction": true,
+        "valid_day_structure": true,
+        "interest_match": 1.0,
+        "forbidden_fact_violation": false,
+        "latency_ms": 0,
+        "estimated_cost_usd": 0.0
+      },
+      "ragas": {
+        "skipped": true,
+        "reason": "no RAG context in pipeline output (baseline or empty retrieve)",
+        "faithfulness": null,
+        "context_recall": null
+      },
+      "fact_results": {
+        "itinerary has 7 days": true,
+        "within budget": true
+      },
+      "forbidden_violations": []
+    }
+  ],
+  "kappa": {
+    "kappa": 0.9278,
+    "target": 0.6,
+    "meets_target": true,
+    "n_cases": 28,
+    "agreement_rate": 0.9643,
+    "rater_a": "rules",
+    "rater_b": "openrouter_judge (27/28)",
+    "rater_counts": {
+      "openrouter_judge": 27,
+      "mock_judge": 1
+    }
+  }
+}

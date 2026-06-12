@@ -1,0 +1,21 @@
+{
+  "japan": [
+    {
+      "mode": "jr_pass",
+      "description": "7-day Japan Rail Pass for intercity travel",
+      "estimated_cost_usd": 220
+    },
+    {
+      "mode": "metro_ic",
+      "description": "IC card top-ups for Tokyo/Kyoto metro",
+      "estimated_cost_usd": 45
+    }
+  ],
+  "default": [
+    {
+      "mode": "transit_pass",
+      "description": "Multi-day public transit pass",
+      "estimated_cost_usd": 50
+    }
+  ]
+}

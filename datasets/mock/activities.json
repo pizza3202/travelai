@@ -1,0 +1,70 @@
+{
+  "japan": [
+    {
+      "name": "Tsukiji Outer Market Food Walk",
+      "category": "food",
+      "estimated_cost_usd": 45,
+      "day_hint": 1
+    },
+    {
+      "name": "Fushimi Inari Shrine Hike",
+      "category": "nature",
+      "estimated_cost_usd": 0,
+      "day_hint": 2
+    },
+    {
+      "name": "Senso-ji Temple & Asakusa Culture Tour",
+      "category": "culture",
+      "estimated_cost_usd": 25,
+      "day_hint": 2
+    },
+    {
+      "name": "Arashiyama Bamboo Grove",
+      "category": "nature",
+      "estimated_cost_usd": 15,
+      "day_hint": 3
+    },
+    {
+      "name": "Nishiki Market Tasting",
+      "category": "food",
+      "estimated_cost_usd": 40,
+      "day_hint": 3
+    },
+    {
+      "name": "TeamLab Planets",
+      "category": "culture",
+      "estimated_cost_usd": 35,
+      "day_hint": 4
+    }
+  ],
+  "paris": [
+    {
+      "name": "Louvre Museum",
+      "category": "culture",
+      "estimated_cost_usd": 22,
+      "day_hint": 1
+    },
+    {
+      "name": "Montmartre Food Tour",
+      "category": "food",
+      "estimated_cost_usd": 55,
+      "day_hint": 2
+    }
+  ],
+  "default": [
+    {
+      "name": "City Walking Tour",
+      "category": "culture",
+      "estimated_cost_usd": 30,
+      "day_hint": 1
+    }
+  ],
+  "_fallback": [
+    {
+      "name": "Local Neighborhood Walk",
+      "category": "culture",
+      "estimated_cost_usd": 0,
+      "day_hint": 1
+    }
+  ]
+}

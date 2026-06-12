@@ -1,0 +1,62 @@
+{
+  "japan": [
+    {
+      "name": "Shinjuku Comfort Inn",
+      "neighborhood": "Shinjuku, Tokyo",
+      "price_per_night_usd": 95
+    },
+    {
+      "name": "Asakusa Heritage Hotel",
+      "neighborhood": "Asakusa, Tokyo",
+      "price_per_night_usd": 110
+    },
+    {
+      "name": "Kyoto Machiya Stay",
+      "neighborhood": "Gion, Kyoto",
+      "price_per_night_usd": 88
+    }
+  ],
+  "paris": [
+    {
+      "name": "Le Marais Boutique",
+      "neighborhood": "Le Marais",
+      "price_per_night_usd": 140
+    }
+  ],
+  "london": [
+    {
+      "name": "South Bank Lodge",
+      "neighborhood": "Southwark",
+      "price_per_night_usd": 130
+    }
+  ],
+  "new_york": [
+    {
+      "name": "Brooklyn Bridge View",
+      "neighborhood": "DUMBO, Brooklyn",
+      "price_per_night_usd": 155
+    }
+  ],
+  "san_francisco": [
+    {
+      "name": "Mission District Inn",
+      "neighborhood": "Mission District",
+      "price_per_night_usd": 175
+    }
+  ],
+  "default": [
+    {
+      "name": "Central City Hotel",
+      "neighborhood": "Downtown",
+      "price_per_night_usd": 100
+    }
+  ],
+  "_fallback": [
+    {
+      "name": "Fallback Hotel",
+      "neighborhood": "City Center",
+      "price_per_night_usd": 90,
+      "note": "fallback estimate"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "san francisco_japan": [
+    {
+      "airline": "Mock Air",
+      "route": "SFO → NRT",
+      "estimated_cost_usd": 780,
+      "note": "estimate only — not a booking"
+    },
+    {
+      "airline": "Budget Wings",
+      "route": "SFO → HND",
+      "estimated_cost_usd": 650,
+      "note": "estimate only — not a booking"
+    }
+  ],
+  "default": [
+    {
+      "airline": "Mock Air",
+      "route": "Origin → Destination",
+      "estimated_cost_usd": 600,
+      "note": "estimate only — not a booking"
+    }
+  ],
+  "_default_fallback": [
+    {
+      "airline": "Fallback Air",
+      "route": "Fallback route",
+      "estimated_cost_usd": 550,
+      "note": "estimate only — not a booking (fallback)"
+    }
+  ]
+}
